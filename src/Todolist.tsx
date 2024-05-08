@@ -36,9 +36,9 @@ export const Todolist = memo((props: PropsType) => {
    const removeTodolist = () => {
       props.removeTodolist(props.id);
    }
-   const changeTodolistTitle =useCallback ((title: string) => {
+   const changeTodolistTitle = useCallback((title: string) => {
       props.changeTodolistTitle(props.id, title);
-   },[props.changeTaskTitle, props.title])
+   }, [props.changeTaskTitle, props.title])
 
    const onAllClickHandler = useCallback(() => props.changeFilter("all", props.id), [props.changeFilter, props.id]);
    const onActiveClickHandler = useCallback(() => props.changeFilter("active", props.id), [props.changeFilter, props.id]);
@@ -65,10 +65,11 @@ export const Todolist = memo((props: PropsType) => {
             tasks.map(t => {
 
                return <Task task={t}
-               removeTask={props.removeTask}
-               changeTaskStatus={props.changeTaskStatus}
-               changeTaskTitle={props.changeTaskTitle}
-               todolistId={props.id}/>
+                            key={t.id}
+                            removeTask={props.removeTask}
+                            changeTaskStatus={props.changeTaskStatus}
+                            changeTaskTitle={props.changeTaskTitle}
+                            todolistId={props.id}/>
             })
          }
       </div>
@@ -82,7 +83,7 @@ export const Todolist = memo((props: PropsType) => {
                     onClick={onActiveClickHandler}
                     color={'primary'}
                     title={"Active"}
-        />
+         />
          <KliButton variant={props.filter === 'completed' ? 'outlined' : 'text'}
                     onClick={onCompletedClickHandler}
                     color={'secondary'}
