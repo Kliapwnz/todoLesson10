@@ -4,7 +4,7 @@ import {AddItemForm} from './AddItemForm';
 import {EditableSpan} from './EditableSpan';
 import IconButton from "@mui/material/IconButton/IconButton";
 import {Delete} from "@mui/icons-material";
-import {Button, Checkbox} from "@mui/material";
+import {Button, ButtonProps, Checkbox} from "@mui/material";
 
 
 export type TaskType = {
@@ -89,21 +89,30 @@ export const Todolist = memo((props: PropsType) => {
          }
       </div>
       <div>
-         <Button variant={props.filter === 'all' ? 'outlined' : 'text'}
-                 onClick={onAllClickHandler}
-                 color={'inherit'}
+         <KliButton variant={props.filter === 'all' ? 'outlined' : 'text'}
+                    onClick={onAllClickHandler}
+                    color={'inherit'}
          >All
-         </Button>
-         <Button variant={props.filter === 'active' ? 'outlined' : 'text'}
-                 onClick={onActiveClickHandler}
-                 color={'primary'}>Active
-         </Button>
-         <Button variant={props.filter === 'completed' ? 'outlined' : 'text'}
-                 onClick={onCompletedClickHandler}
-                 color={'secondary'}>Completed
-         </Button>
+         </KliButton>
+         <KliButton variant={props.filter === 'active' ? 'outlined' : 'text'}
+                    onClick={onActiveClickHandler}
+                    color={'primary'}>Active
+         </KliButton>
+         <KliButton variant={props.filter === 'completed' ? 'outlined' : 'text'}
+                    onClick={onCompletedClickHandler}
+                    color={'secondary'}>Completed
+         </KliButton>
       </div>
    </div>
 })
+
+type KliButtonPropsType = {} & ButtonProps
+
+const KliButton = ({variant, onClick, color, title}: KliButtonPropsType) => {
+   return <Button variant={variant}
+                  onClick={onClick}
+                  color={color}>{title}
+   </Button>
+}
 
 
