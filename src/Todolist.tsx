@@ -5,6 +5,7 @@ import {EditableSpan} from './EditableSpan';
 import IconButton from "@mui/material/IconButton/IconButton";
 import {Delete} from "@mui/icons-material";
 import {Button, ButtonProps, Checkbox} from "@mui/material";
+import {Task} from "./Task";
 
 
 export type TaskType = {
@@ -62,28 +63,12 @@ export const Todolist = memo((props: PropsType) => {
       <div>
          {
             tasks.map(t => {
-               const onClickHandler = () => props.removeTask(t.id, props.id)
-               const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-                  let newIsDoneValue = e.currentTarget.checked;
-                  props.changeTaskStatus(t.id, newIsDoneValue, props.id);
-               }
-               const onTitleChangeHandler = (newValue: string) => {
-                  props.changeTaskTitle(t.id, newValue, props.id);
-               }
 
-
-               return <div key={t.id} className={t.isDone ? "is-done" : ""}>
-                  <Checkbox
-                     checked={t.isDone}
-                     color="primary"
-                     onChange={onChangeHandler}
-                  />
-
-                  <EditableSpan value={t.title} onChange={onTitleChangeHandler}/>
-                  <IconButton onClick={onClickHandler}>
-                     <Delete/>
-                  </IconButton>
-               </div>
+               return <Task task={t}
+               removeTask={props.removeTask}
+               changeTaskStatus={props.changeTaskStatus}
+               changeTaskTitle={props.changeTaskTitle}
+               todolistId={props.id}/>
             })
          }
       </div>
