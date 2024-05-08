@@ -92,16 +92,18 @@ export const Todolist = memo((props: PropsType) => {
          <KliButton variant={props.filter === 'all' ? 'outlined' : 'text'}
                     onClick={onAllClickHandler}
                     color={'inherit'}
-         >All
-         </KliButton>
+                    title={"All"}
+         />
          <KliButton variant={props.filter === 'active' ? 'outlined' : 'text'}
                     onClick={onActiveClickHandler}
-                    color={'primary'}>Active
-         </KliButton>
+                    color={'primary'}
+                    title={"Active"}
+        />
          <KliButton variant={props.filter === 'completed' ? 'outlined' : 'text'}
                     onClick={onCompletedClickHandler}
-                    color={'secondary'}>Completed
-         </KliButton>
+                    color={'secondary'}
+                    title={"Completed"}
+         />
       </div>
    </div>
 })
