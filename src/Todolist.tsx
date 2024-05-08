@@ -31,7 +31,7 @@ export const Todolist = memo((props: PropsType) => {
    console.log("todolist is called")
    const addTask = useCallback((title: string) => {
       props.addTask(title, props.id);
-   },[props.addTask, props.id])
+   }, [props.addTask, props.id])
 
    const removeTodolist = () => {
       props.removeTodolist(props.id);
@@ -40,9 +40,9 @@ export const Todolist = memo((props: PropsType) => {
       props.changeTodolistTitle(props.id, title);
    }
 
-   const onAllClickHandler = () => props.changeFilter("all", props.id);
-   const onActiveClickHandler = () => props.changeFilter("active", props.id);
-   const onCompletedClickHandler = () => props.changeFilter("completed", props.id);
+   const onAllClickHandler = useCallback(() => props.changeFilter("all", props.id), [props.changeFilter, props.id]);
+   const onActiveClickHandler = useCallback(() => props.changeFilter("active", props.id), [props.changeFilter, props.id]);
+   const onCompletedClickHandler = useCallback(() => props.changeFilter("completed", props.id), [props.changeFilter, props.id]);
    let tasks = props.tasks;
 
    if (props.filter === "active") {
@@ -51,6 +51,7 @@ export const Todolist = memo((props: PropsType) => {
    if (props.filter === "completed") {
       tasks = tasks.filter(t => t.isDone);
    }
+
 
    return <div>
       <h3><EditableSpan value={props.title} onChange={changeTodolistTitle}/>
