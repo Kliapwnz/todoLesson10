@@ -52,7 +52,7 @@ export const Todolist = memo((props: PropsType) => {
          tasks = tasks.filter(t => t.isDone);
       }
       return tasks
-   },[])
+   },[props.tasks])
 
 
 
