@@ -108,10 +108,11 @@ export const Todolist = memo((props: PropsType) => {
 
 type KliButtonPropsType = {} & ButtonProps
 
-const KliButton = ({variant, onClick, color, title}: KliButtonPropsType) => {
+const KliButton = ({variant, onClick, color, title, ...rest}: KliButtonPropsType) => {
    return <Button variant={variant}
                   onClick={onClick}
-                  color={color}>{title}
+                  color={color}
+                  {...rest}>{title}
    </Button>
 }
 
