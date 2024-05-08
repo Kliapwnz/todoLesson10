@@ -1,4 +1,4 @@
-import React, {ChangeEvent} from 'react';
+import React, {ChangeEvent, memo} from 'react';
 import {Checkbox} from "@mui/material";
 import {EditableSpan} from "./EditableSpan";
 import IconButton from "@mui/material/IconButton/IconButton";
@@ -14,7 +14,7 @@ type TaskPropsType = {
    removeTask: (taskId: string, todolistId: string) => void
 
 }
-export const Task = ({task, changeTaskTitle,changeTaskStatus, removeTask, todolistId}:TaskPropsType) => {
+export const Task = memo(({task, changeTaskTitle,changeTaskStatus, removeTask, todolistId}:TaskPropsType) => {
    const onClickHandler = () => removeTask(task.id, todolistId)
    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
       let newIsDoneValue = e.currentTarget.checked;
@@ -39,5 +39,5 @@ export const Task = ({task, changeTaskTitle,changeTaskStatus, removeTask, todoli
       </div>
       </div>
    );
-};
+});
 
