@@ -1,10 +1,10 @@
-import React, {ChangeEvent, memo, useCallback} from 'react';
+import React, {memo, useCallback} from 'react';
 import {FilterValuesType} from '../../App';
 import {AddItemForm} from '../AddItemForm/AddItemForm';
 import {EditableSpan} from '../EditableSpan/EditableSpan';
 import IconButton from "@mui/material/IconButton/IconButton";
 import {Delete} from "@mui/icons-material";
-import {Button, ButtonProps, Checkbox} from "@mui/material";
+import {Button, ButtonProps} from "@mui/material";
 import {Task} from "../Task/Task";
 
 
