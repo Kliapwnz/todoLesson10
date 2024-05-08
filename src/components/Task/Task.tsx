@@ -1,9 +1,9 @@
 import React, {ChangeEvent, memo} from 'react';
 import {Checkbox} from "@mui/material";
-import {EditableSpan} from "./EditableSpan";
+import {EditableSpan} from "../EditableSpan/EditableSpan";
 import IconButton from "@mui/material/IconButton/IconButton";
 import {Delete} from "@mui/icons-material";
-import {TaskType} from "./Todolist";
+import {TaskType} from "../Todolist/Todolist";
 
 
 type TaskPropsType = {
@@ -25,7 +25,7 @@ export const Task = memo(({task, changeTaskTitle,changeTaskStatus, removeTask, t
    }
    return (
       <div>
-         return <div className={task.isDone ? "is-done" : ""}>
+         <div className={task.isDone ? "is-done" : ""}>
          <Checkbox
             checked={task.isDone}
             color="primary"
